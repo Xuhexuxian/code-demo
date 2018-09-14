@@ -1108,7 +1108,7 @@
     <column id="278" parent="277" name="id">
       <Position>1</Position>
       <Comment>id</Comment>
-      <DataType>char(32)|0s</DataType>
+      <DataType>char(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1116,6 +1116,7 @@
       <Position>2</Position>
       <Comment>光速节点名称</Comment>
       <DataType>varchar(256)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="280" parent="277" name="csadress">
@@ -1226,7 +1227,19 @@
       <DataType>tinyint(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="298" parent="277" name="PRIMARY">
+    <column id="298" parent="277" name="teaminfo">
+      <Position>21</Position>
+      <Comment>团队介绍</Comment>
+      <DataType>varchar(256)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="299" parent="277" name="companyname">
+      <Position>22</Position>
+      <Comment>公司名称</Comment>
+      <DataType>varchar(256)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="300" parent="277" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

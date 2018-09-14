@@ -1,9 +1,14 @@
 package com.demo.domain;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "gsc")
+@DynamicUpdate
+@DynamicInsert
 public class GscEntity {
     private String id;
     private String gsnode;
@@ -25,6 +30,8 @@ public class GscEntity {
     private String meetupspread;
     private String communityspread;
     private Byte isDeleted;
+    private String teaminfo;
+    private String companyname;
 
     @Id
     @Column(name = "id")
@@ -226,6 +233,26 @@ public class GscEntity {
         this.isDeleted = isDeleted;
     }
 
+    @Basic
+    @Column(name = "teaminfo")
+    public String getTeaminfo() {
+        return teaminfo;
+    }
+
+    public void setTeaminfo(String teaminfo) {
+        this.teaminfo = teaminfo;
+    }
+
+    @Basic
+    @Column(name = "companyname")
+    public String getCompanyname() {
+        return companyname;
+    }
+
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
+    }
+
     @Override
     public String toString() {
         return "GscEntity{" +
@@ -248,7 +275,9 @@ public class GscEntity {
                 ", livespread='" + livespread + '\'' +
                 ", meetupspread='" + meetupspread + '\'' +
                 ", communityspread='" + communityspread + '\'' +
-                ", isDeleted=" + isDeleted +
+                ", teaminfo='" + teaminfo + '\'' +
+                ", companyname='" + companyname + '\'' +
+                ", isDeleted=" + "0" +
                 '}';
     }
 }

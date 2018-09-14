@@ -8,8 +8,11 @@ import javax.validation.constraints.NotNull;
 
 @Setter
 @Getter
-public class
-AddGscRequest {
+
+public class UpdateGsc {
+
+    private String id;
+    private int isdelete;
     @NotEmpty(message = "光速节点名称不能为空")
     @NotNull(message = "光速节点名称不能为空")
     private String gsnode;
@@ -73,8 +76,9 @@ AddGscRequest {
 
     @Override
     public String toString() {
-        return "AddGscRequest{" +
-                "gsnode='" + gsnode + '\'' +
+        return "UpdateGsc{" +
+                ", id='" + id + '\'' +
+                ", gsnode='" + gsnode + '\'' +
                 ", csadress='" + csadress + '\'' +
                 ", gsnodepoint='" + gsnodepoint + '\'' +
                 ", facebook='" + facebook + '\'' +
@@ -94,6 +98,7 @@ AddGscRequest {
                 ", communityspread='" + communityspread + '\'' +
                 ", teaminfo='" + teaminfo + '\'' +
                 ", companyname='" + companyname + '\'' +
+                ", isdelete='" + "0 "+ '\'' +
                 '}';
     }
 }

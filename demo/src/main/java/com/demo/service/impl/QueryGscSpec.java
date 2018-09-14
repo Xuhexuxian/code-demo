@@ -10,7 +10,9 @@ public class QueryGscSpec {
     public static Specification<GscEntity> queryGscSpec(QueryGscPageRequest request) {
         if (null != request.getGsnode() && !"".equals(request.getGsnode())) {
             return Specifications.<GscEntity>and()
+                    /*
                     .eq("isDeleted", "0")
+                    */
                     .eq("gsnode", request.getGsnode())
                     .build();
         }

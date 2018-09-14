@@ -4,7 +4,9 @@ import com.demo.dao.GscDao;
 import com.demo.domain.GscEntity;
 import com.demo.reponse.gsc.QueryGscPageResponse;
 import com.demo.request.AddGscRequest;
+import com.demo.request.GscRequest;
 import com.demo.request.QueryGscPageRequest;
+import com.demo.request.UpdateGsc;
 import com.demo.service.GscService;
 import com.demo.util.DozerBeanMapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +59,43 @@ public class GscServiceImpl implements GscService {
         queryGscPageResponse.setTotalElements(gsc.getTotalElements());
         queryGscPageResponse.setGscEntities(gsc.getContent());
         return queryGscPageResponse;
+    }
+
+    /**
+     * 修改
+     * @param request
+     * @throws Exception
+     */
+    @Override
+    public void updateNodePage(UpdateGsc request) throws Exception {
+        GscEntity gscEntity = DozerBeanMapperUtil.dozerBeanMapper(request, GscEntity.class);
+        gscDao.save(gscEntity);
+    }
+
+    /**
+     * 删除
+     * @param request
+     * @throws Exception
+     */
+    public void deleteNode(GscRequest request) throws Exception {
+        GscEntity one = gscDao.getOne(request.getGscGsnode());
+        if (one != null && one.getIsDeleted() == 0) {
+            one.setIsDeleted((byte) 1);
+            gscDao.saveAndFlush(one);
+        }
+    }
+
+    /**
+     * 获取修改信息
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    public UpdateGsc queryGscByGscnode(GscRequest request) throws Exception {
+        GscEntity one = gscDao.queryGesNode(request.getGscGsnode());
+        if (one == null || one.getIsDeleted() == 1) {
+            return null;
+        }
+        return DozerBeanMapperUtil.dozerBeanMapper(one, UpdateGsc.class);
     }
 }
